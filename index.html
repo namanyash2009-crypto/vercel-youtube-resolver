@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Resolver API</title>
+  <style>
+    body { font-family: system-ui; max-width: 800px; margin: 50px auto; padding: 20px; line-height: 1.6; }
+    .endpoint { background: #f0f0f0; padding: 15px; border-radius: 8px; font-family: monospace; overflow-x: auto; }
+    .status { padding: 10px; border-radius: 4px; margin: 10px 0; }
+    .ok { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+  </style>
+</head>
+<body>
+  <h1>🎵 YouTube Stream Resolver API</h1>
+  <p>Vercel serverless function for extracting YouTube stream URLs (cookie-free).</p>
+  
+  <h2>Endpoint</h2>
+  <div class="endpoint"><code>GET /api/youtube/resolve?url=<youtube_url></code></div>
+  
+  <h2>Parameters</h2>
+  <ul>
+    <li><code>url</code> (required) - YouTube URL or 11-character video ID</li>
+  </ul>
+  
+  <h2>Example</h2>
+  <div class="endpoint"><code>/api/youtube/resolve?url=https://www.youtube.com/watch?v=PTjOWm3p5XM</code></div>
+  
+  <h2>Success Response</h2>
+  <div class="status ok">
+    <pre>{
+  "status": "ok",
+  "stream_url": "https://rr5---sn-xxx.googlevideo.com/videoplayback?...",
+  "title": "Video Title",
+  "duration": 199,
+  "video_id": "PTjOWm3p5XM",
+  "format": {
+    "itag": 140,
+    "mime_type": "audio/mp4; codecs=\"mp4a.40.2\"",
+    "bitrate": 128000,
+    "quality": "AUDIO_QUALITY_MEDIUM",
+    "container": "mp4"
+  }
+}</pre>
+  </div>
+  
+  <h2>Error Response</h2>
+  <div class="status error">
+    <pre>{
+  "status": "error",
+  "error": "Sign in to confirm you're not a bot",
+  "bot_wall": true
+}</pre>
+  </div>
+</body>
+</html>

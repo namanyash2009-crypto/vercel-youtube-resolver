@@ -1,7 +1,4 @@
 {
   "name": "vercel-youtube-resolver",
-  "version": "1.0.0",
-  "dependencies": {
-    "@distube/ytdl-core": "^4.16.5"
-  }
+  "version": "1.0.0"
 }
